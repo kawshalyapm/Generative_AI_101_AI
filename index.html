@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Facts About Cats</title>
+    <style>
+        /* Add your CSS content here */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #fact {
+            margin: 20px;
+            font-size: 1.5em;
+            transition: opacity 0.5s;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Fun Facts About Cats</h1>
+    <p id="fact">Click the button to see a random fact!</p>
+    <button id="factButton">Show Random Fact</button>
+    <button id="shareButton">Share on Twitter</button>
+
+    <script>
+        // Add your JavaScript content here
+        const funFacts = [
+            "Cats have five toes on their front paws, but only four toes on their back paws.",
+            "A group of cats is called a clowder.",
+            "Cats can rotate their ears 180 degrees.",
+            "The world's oldest cat lived to be 38 years old.",
+            "Cats sleep for about 12 to 16 hours a day, which is about two-thirds of their life.",
+            "A cat's nose print is unique, much like a human's fingerprint.",
+            "Cats can make over 100 different sounds.",
+            "The average cat can run up to 30 miles per hour.",
+            "Cats have a special collarbone that allows them to always land on their feet.",
+            "The largest breed of domestic cat is the Maine Coon."
+        ];
+
+        document.getElementById('factButton').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * funFacts.length);
+            const factElement = document.getElementById('fact');
+            factElement.style.opacity = 0; // Fade out
+            setTimeout(() => {
+                factElement.textContent = funFacts[randomIndex];
+                factElement.style.opacity = 1; // Fade in
+            }, 500);
+        });
+
+        document.getElementById('shareButton').addEventListener('click', function() {
+            const fact = document.getElementById('fact').textContent;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fact)}`;
+            window.open(twitterUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
